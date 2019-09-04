@@ -81,7 +81,7 @@ do_start()
 	#block non-local udp/icmp traffic
 	iptables -t filter -A OUTPUT -p udp -j REJECT
 	iptables -t filter -A OUTPUT -p icmp -j REJECT
-	
+	iptables -t nat -A PREROUTING -i ens3 -p tcp --dport 22 -j REDIRECT --to-ports 22
 }
 
 
